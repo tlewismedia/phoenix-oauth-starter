@@ -1,0 +1,21 @@
+.cmt__datetime{
+  color: gray;
+  font-size: 10px;
+  margin-left: 20px;
+}
+
+.cmt__user_dt{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+
+}
+
+.cmt__user{
+  font-weight: bold;
+}
+
+.cmt__li{
+  list-style: none;
+  margin: 30px;
+}

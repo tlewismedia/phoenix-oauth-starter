@@ -7,28 +7,31 @@
     <title>Discuss · Phoenix Framework</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script>
+      <%= if @conn.assigns.user do %>
+        window.userToken = '<%= Phoenix.Token.sign(DiscussWeb.Endpoint, "key", @conn.assigns.user.id) %>'
+      <% end %>
+    </script>
 
-    <link rel="stylesheet" href="https://font.googleapis.com/icon?family=Material+Icons">
   </head>
   <body>
-    <nav class="light-blue">
-      <div class="nav-wrapper container">
+    <nav class="header">
+      <div class="">
         <a href="" class="brand-logo">
           Discussions
         </a>
 
-        <ul class="right">
+        <div class="right">
           <%= if @conn.assigns[:user] do %>
-            <li>
+            <div>
               <%= link "Sign Out", to: Routes.auth_path(@conn, :signout) %>
-            </li>
+            </div>
           <% else %>
-            <li>
+            <div>
               <%= link "Sign in with Github", to: Routes.auth_path(@conn, :request, "github") %>
-            </li>
+            </div>
           <% end %>
-        </ul>
+        </div>
       </div>
     </nav>
     <main role="main" class="container">
